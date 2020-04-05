@@ -6,7 +6,7 @@ namespace Ebarbeito\Php\Test\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-class DummyUnitSuiteTest extends TestCase
+final class DummyUnitSuiteTest extends TestCase
 {
     public function test_unit_dummy(): void
     {
