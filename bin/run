@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+# A wrapper around docker-compose run
+
+which docker-compose > /dev/null 2>&1
+EXIT_CODE=$?
+if [ $EXIT_CODE -ne 0 ]; then
+    echo "This script needs docker-compose installed" 1>&2
+    exit $EXIT_CODE
+fi
+
+set -e
+
+BIN_DIR=$(dirname "$0")
+DCR="docker-compose -f $BIN_DIR/../docker-compose.yml run"
+CUT=$(which cut)
+ECHO=$(which echo)
+CMD=$1
+ARGS=$($ECHO "$@ " | $CUT -d' ' -f2-)
+
+echo $DCR $CMD $ARGS
+$DCR $CMD $ARGS

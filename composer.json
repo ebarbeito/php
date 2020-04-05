@@ -1,0 +1,21 @@
+{
+    "name": "ebarbeito/php",
+    "description": "Skeleton to bootstrap plain PHP projects",
+    "type": "project",
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ebarbeito\\Php\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ebarbeito\\Php\\Test\\": "tests"
+        }
+    }
+}
