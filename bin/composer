@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# A wrapper around docker-compose run composer
+
+( $(dirname "$0")/run $(basename "$0") $* )

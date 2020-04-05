@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# A wrapper around docker-compose run php
+
+( $(dirname "$0")/run $(basename "$0") $* )
