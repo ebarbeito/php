@@ -12,10 +12,10 @@ set -e
 
 BIN_DIR=$(dirname "$0")
 DCR="docker-compose -f $BIN_DIR/../docker-compose.yml run"
-CUT=$(which cut)
-ECHO=$(which echo)
+CUT=$(command -v cut)
+ECHO=$(command -v echo)
 CMD=$1
-ARGS=$($ECHO "$@ " | $CUT -d' ' -f2-)
+ARGS=$($ECHO "$* " | $CUT -d' ' -f2-)
 
 echo $DCR $CMD $ARGS
 $DCR $CMD $ARGS
