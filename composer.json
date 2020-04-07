@@ -1,6 +1,6 @@
 {
     "name": "ebarbeito/php",
-    "description": "Skeleton to bootstrap plain PHP projects",
+    "description": "Skeleton to bootstrap plain PHP projects with docker",
     "type": "project",
     "require": {
         "php": "^7.4"
