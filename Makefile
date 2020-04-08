@@ -14,8 +14,13 @@ MAKE = make
 RM = rm -rf
 
 #############################################################################
-## Container targets
+## Container tasks
 #############################################################################
+
+.PHONY: build
+.SILENT: build
+build: ; $(info Building the custom images needed)
+	$(DC) build ${ARGS}
 
 .PHONY: flush
 .SILENT: flush
@@ -33,7 +38,7 @@ list: ; $(info Listing current containers)
 	$(DC) ps -a ${ARGS}
 
 #############################################################################
-## Dependencies
+## Dependency tasks
 #############################################################################
 
 .PHONY: install
@@ -57,7 +62,7 @@ update: ; $(info Updating the project dependencies)
 	$(DCR) composer update ${ARGS}
 
 #############################################################################
-## Project
+## Project tasks
 #############################################################################
 
 .PHONY: archive
@@ -86,7 +91,7 @@ help:
 	@printf "$$help"
 
 #############################################################################
-## Tests
+## Testing tasks
 #############################################################################
 
 .PHONY: tests
@@ -115,7 +120,7 @@ unit: ; $(info Running only the unit suite tests)
 	$(DCR) phpunit --configuration=./phpunit.xml.dist --testsuite=unit ${ARGS}
 
 #############################################################################
-## Web server
+## Web service tasks
 #############################################################################
 
 .PHONY: start
@@ -138,32 +143,33 @@ restart: stop start
 
 define help
 $(YELLOW)Usage:$(NOCOLOR)
-  $(MAKE) target [ARGS=arguments]
+  $(MAKE) task [ARGS=arguments]
 
-$(YELLOW)Container targets$(NOCOLOR)
+$(YELLOW)Container tasks(NOCOLOR)
+  $(GREEN)build$(NOCOLOR)             Builds the custom images needed for containers
   $(GREEN)flush$(NOCOLOR)             Removes created containers (stops, if needed)
   $(GREEN)inside ARGS=name$(NOCOLOR)  Opens a shell within the container 'name'
   $(GREEN)list$(NOCOLOR)              List current containers
 
-$(YELLOW)Dependency targets$(NOCOLOR)
+$(YELLOW)Dependency tasks(NOCOLOR)
   $(GREEN)install$(NOCOLOR)           Resolves and installs the project dependencies
   $(GREEN)reinstall$(NOCOLOR)         Removes and reinstalls the project dependencies
   $(GREEN)remove$(NOCOLOR)            Removes all content from dependencies
   $(GREEN)update$(NOCOLOR)            Updates the project dependencies
 
-$(YELLOW)Project targets$(NOCOLOR)
+$(YELLOW)Project tasks(NOCOLOR)
   $(GREEN)archive$(NOCOLOR)           Generates a tar archive of the cleaned project
   $(GREEN)clean$(NOCOLOR)             Leave the project clean without generated files
   $(GREEN)help$(NOCOLOR)              Shows this help command usage
 
-$(YELLOW)Testing targets$(NOCOLOR)
+$(YELLOW)Testing tasks(NOCOLOR)
   $(GREEN)tests$(NOCOLOR)             Runs all kind of testing available
   $(GREEN)acceptance$(NOCOLOR)        Runs only the acceptance suite tests
   $(GREEN)functional$(NOCOLOR)        Runs only the functional suite tests
   $(GREEN)integration$(NOCOLOR)       Runs only the integration suite tests
   $(GREEN)unit$(NOCOLOR)              Runs only the unit suite tests
 
-$(YELLOW)Web service targets$(NOCOLOR)
+$(YELLOW)Web service tasks(NOCOLOR)
   $(GREEN)start$(NOCOLOR)             Starts the web services
   $(GREEN)stop$(NOCOLOR)              Stops the web services
   $(GREEN)restart$(NOCOLOR)           Restarts the web services

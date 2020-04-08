@@ -9,10 +9,15 @@ services:
       - .:/app
 
   fpm:
-    image: php:7.4-fpm
+    build:
+      context: ./config/fpm
     restart: always
     volumes:
       - .:/app
+      - ./config/fpm/conf.d/:/usr/local/etc/php/conf.d/
+      - ./var/log/xdebug/:/tmp/xdebug/
+      - ./var/log/xdebug-profiling/:/tmp/xdebug-profiling/
+    working_dir: /app
 
   nginx:
     image: nginx:stable-alpine
