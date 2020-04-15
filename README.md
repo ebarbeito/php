@@ -25,32 +25,37 @@ Once created, you can start by customizing the `composer.json` file, taking a lo
 
 ```
 $ cd project-name
-$ tree .
-  .
-  ├── Makefile
-  ├── README.md
-  ├── bin
-  │   ├── composer
-  │   ├── php
-  │   ├── phpunit
-  │   └── run
-  ├── composer.json
-  ├── config
-  │   └── nginx
-  │       └── site.conf
-  ├── docker-compose.yml
-  ├── phpunit.xml.dist
-  ├── public
-  │   └── index.php
-  ├── src
-  ├── tests
-  │   ├── Functional
-  │   │   └── DummyFunctionalSuiteTest.php
-  │   ├── Integration
-  │   │   └── DummyIntegrationSuiteTest.php
-  │   └── Unit
-  │       └── DummyUnitSuiteTest.php
-  └── var
+$ tree -f -I "README.md" .
+.
+├── ./Makefile
+├── ./bin
+│   ├── ./bin/composer
+│   ├── ./bin/php
+│   ├── ./bin/phpunit
+│   └── ./bin/run
+├── ./composer.json
+├── ./config
+│   ├── ./config/composer
+│   │   └── ./config/composer/Dockerfile
+│   ├── ./config/fpm
+│   │   ├── ./config/fpm/Dockerfile
+│   │   └── ./config/fpm/conf.d
+│   │       └── ./config/fpm/conf.d/ext-xdebug.ini
+│   └── ./config/nginx
+│       └── ./config/nginx/site.conf
+├── ./docker-compose.yml
+├── ./phpunit.xml.dist
+├── ./public
+│   └── ./public/index.php
+├── ./src
+├── ./tests
+│   ├── ./tests/Functional
+│   │   └── ./tests/Functional/DummyFunctionalSuiteTest.php
+│   ├── ./tests/Integration
+│   │   └── ./tests/Integration/DummyIntegrationSuiteTest.php
+│   └── ./tests/Unit
+│       └── ./tests/Unit/DummyUnitSuiteTest.php
+└── ./var
 ```
 
 ## bin/ scripts
