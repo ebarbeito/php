@@ -10,6 +10,6 @@ final class DummyIntegrationSuiteTest extends TestCase
 {
     public function test_integration_dummy(): void
     {
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

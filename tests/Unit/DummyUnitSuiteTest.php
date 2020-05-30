@@ -10,6 +10,6 @@ final class DummyUnitSuiteTest extends TestCase
 {
     public function test_unit_dummy(): void
     {
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

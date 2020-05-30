@@ -10,6 +10,6 @@ final class DummyFunctionalSuiteTest extends TestCase
 {
     public function test_functional_dummy(): void
     {
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

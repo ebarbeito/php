@@ -94,6 +94,11 @@ help:
 ## Testing tasks
 #############################################################################
 
+.PHONY: coverage
+.SILENT: coverage
+coverage: ; $(info Generate coverage report in HTML format)
+	$(DCR) fpm ./vendor/bin/phpunit --configuration=./phpunit.xml.dist --testsuite=unit --coverage-html=coverage ${ARGS}
+
 .PHONY: tests
 .SILENT: tests
 tests: ; $(info Running all kind of testing available)
@@ -163,6 +168,7 @@ $(YELLOW)Project tasks$(NOCOLOR)
   $(GREEN)help$(NOCOLOR)              Shows this help command usage
 
 $(YELLOW)Testing tasks$(NOCOLOR)
+  $(GREEN)coverage$(NOCOLOR)          Generate coverage report in HTML format
   $(GREEN)tests$(NOCOLOR)             Runs all kind of testing available
   $(GREEN)acceptance$(NOCOLOR)        Runs only the acceptance suite tests
   $(GREEN)functional$(NOCOLOR)        Runs only the functional suite tests
