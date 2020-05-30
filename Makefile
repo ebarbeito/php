@@ -102,7 +102,8 @@ coverage: ; $(info Generate coverage report in HTML format)
 .PHONY: tests
 .SILENT: tests
 tests: ; $(info Running all kind of testing available)
-	$(DCR) phpunit --configuration=./phpunit.xml.dist ${ARGS}
+	$(DCR) phpstan --configuration=./phpstan.neon.dist analyze
+	$(DCR) phpunit --configuration=./phpunit.xml.dist --colors=always
 
 .PHONY: acceptance
 .SILENT: acceptance

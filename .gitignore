@@ -1,5 +1,6 @@
 composer.lock
 coverage
+phpstan.neon
 phpunit.xml
 var
 vendor
