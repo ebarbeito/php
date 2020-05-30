@@ -1,47 +1,47 @@
 version: '3'
 services:
-  composer:
-    build:
-      context: ./config/composer
-    restart: never
-    environment:
-      - COMPOSER_CACHE_DIR=/app/var/cache/composer
-    volumes:
-      - .:/app
+    composer:
+        build:
+            context: ./config/composer
+        restart: never
+        environment:
+            - COMPOSER_CACHE_DIR=/app/var/cache/composer
+        volumes:
+            - .:/app
 
-  fpm:
-    build:
-      context: ./config/fpm
-    restart: always
-    volumes:
-      - .:/app
-      - ./config/fpm/conf.d/:/usr/local/etc/php/conf.d/
-      - ./var/log/xdebug/:/tmp/xdebug/
-      - ./var/log/xdebug-profiling/:/tmp/xdebug-profiling/
-    working_dir: /app
+    fpm:
+        build:
+            context: ./config/fpm
+        restart: always
+        volumes:
+            - .:/app
+            - ./config/fpm/conf.d/:/usr/local/etc/php/conf.d/
+            - ./var/log/xdebug/:/tmp/xdebug/
+            - ./var/log/xdebug-profiling/:/tmp/xdebug-profiling/
+        working_dir: /app
 
-  nginx:
-    image: nginx:stable-alpine
-    ports:
-      - 8080:80
-    volumes:
-      - .:/app
-      - ./config/nginx/site.conf:/etc/nginx/conf.d/default.conf
-      - ./var/log/nginx:/var/log/nginx
-    depends_on:
-      - fpm
+    nginx:
+        image: nginx:stable-alpine
+        ports:
+            - 8080:80
+        volumes:
+            - .:/app
+            - ./config/nginx/site.conf:/etc/nginx/conf.d/default.conf
+            - ./var/log/nginx:/var/log/nginx
+        depends_on:
+            - fpm
 
-  php:
-    image: php:7.4-cli
-    restart: never
-    volumes:
-      - .:/app
-    working_dir: /app
+    php:
+        image: php:7.4-cli
+        restart: never
+        volumes:
+            - .:/app
+        working_dir: /app
 
-  phpunit:
-    image: php:7.4-cli
-    restart: never
-    volumes:
-      - .:/app
-    working_dir: /app
-    entrypoint: ./vendor/bin/phpunit
+    phpunit:
+        image: php:7.4-cli
+        restart: never
+        volumes:
+            - .:/app
+        working_dir: /app
+        entrypoint: ./vendor/bin/phpunit

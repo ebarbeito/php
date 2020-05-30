@@ -145,31 +145,31 @@ define help
 $(YELLOW)Usage:$(NOCOLOR)
   $(MAKE) task [ARGS=arguments]
 
-$(YELLOW)Container tasks(NOCOLOR)
+$(YELLOW)Container tasks$(NOCOLOR)
   $(GREEN)build$(NOCOLOR)             Builds the custom images needed for containers
   $(GREEN)flush$(NOCOLOR)             Removes created containers (stops, if needed)
   $(GREEN)inside ARGS=name$(NOCOLOR)  Opens a shell within the container 'name'
   $(GREEN)list$(NOCOLOR)              List current containers
 
-$(YELLOW)Dependency tasks(NOCOLOR)
+$(YELLOW)Dependency tasks$(NOCOLOR)
   $(GREEN)install$(NOCOLOR)           Resolves and installs the project dependencies
   $(GREEN)reinstall$(NOCOLOR)         Removes and reinstalls the project dependencies
   $(GREEN)remove$(NOCOLOR)            Removes all content from dependencies
   $(GREEN)update$(NOCOLOR)            Updates the project dependencies
 
-$(YELLOW)Project tasks(NOCOLOR)
+$(YELLOW)Project tasks$(NOCOLOR)
   $(GREEN)archive$(NOCOLOR)           Generates a tar archive of the cleaned project
   $(GREEN)clean$(NOCOLOR)             Leave the project clean without generated files
   $(GREEN)help$(NOCOLOR)              Shows this help command usage
 
-$(YELLOW)Testing tasks(NOCOLOR)
+$(YELLOW)Testing tasks$(NOCOLOR)
   $(GREEN)tests$(NOCOLOR)             Runs all kind of testing available
   $(GREEN)acceptance$(NOCOLOR)        Runs only the acceptance suite tests
   $(GREEN)functional$(NOCOLOR)        Runs only the functional suite tests
   $(GREEN)integration$(NOCOLOR)       Runs only the integration suite tests
   $(GREEN)unit$(NOCOLOR)              Runs only the unit suite tests
 
-$(YELLOW)Web service tasks(NOCOLOR)
+$(YELLOW)Web service tasks$(NOCOLOR)
   $(GREEN)start$(NOCOLOR)             Starts the web services
   $(GREEN)stop$(NOCOLOR)              Stops the web services
   $(GREEN)restart$(NOCOLOR)           Restarts the web services
